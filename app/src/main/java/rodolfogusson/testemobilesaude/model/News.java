@@ -2,9 +2,10 @@ package rodolfogusson.testemobilesaude.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class News {
+public class News implements Serializable{
 
     private int id;
 
