@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * Class that represents an element at the list of short news in
+ * {@link rodolfogusson.testemobilesaude.ui.activities.newslist.NewsListActivity}.
+ */
 public class NewsListElement {
 
     private int id;

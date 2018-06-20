@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="written_date">d \'de\' MMMM</string>
+    <string name="list_date">d \'de\' MMMM</string>
+    <string name="details_date">d \'de\' MMMM \'de\' yyyy | HH:mm</string>
     <string name="newsListElement">Notícias</string>
     <string name="details">Detalhes</string>
 </resources>

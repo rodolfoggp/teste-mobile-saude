@@ -24,4 +24,37 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="CardTitle">
+        <item name="android:layout_marginTop">@dimen/single_space</item>
+        <item name="android:layout_marginStart">@dimen/double_space</item>
+        <item name="android:layout_marginEnd">@dimen/double_space</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">@dimen/min_card_title_size</item>
+        <item name="android:autoSizeMaxTextSize">@dimen/max_card_title_size</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="CardDate">
+        <item name="android:layout_marginStart">@dimen/double_space</item>
+        <item name="android:layout_marginBottom">@dimen/single_space</item>
+    </style>
+
+    <style name="DetailsTitle">
+        <item name="android:textSize">@dimen/details_title_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">@dimen/triple_space</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="DetailsDate">
+        <item name="android:layout_marginLeft">@dimen/triple_space</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="DetailsContent">
+        <item name="android:padding">@dimen/triple_space</item>
+    </style>
+
 </resources>

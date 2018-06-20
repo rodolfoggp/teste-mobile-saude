@@ -8,6 +8,9 @@ import retrofit2.http.Path;
 import rodolfogusson.testemobilesaude.model.DetailedNews;
 import rodolfogusson.testemobilesaude.model.NewsListElement;
 
+/**
+ * Interface that determine methods to be used to consume the REST Api.
+ */
 public interface NewsAPI {
     String BASE_URL = "http://mobilesaude.com.br/";
 

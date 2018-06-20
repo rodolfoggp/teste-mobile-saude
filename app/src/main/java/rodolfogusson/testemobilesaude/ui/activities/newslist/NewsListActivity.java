@@ -17,6 +17,9 @@ import rodolfogusson.testemobilesaude.communication.RestAdapter;
 import rodolfogusson.testemobilesaude.model.NewsListElement;
 import rodolfogusson.testemobilesaude.ui.activities.newslist.adapters.NewsListAdapter;
 
+/**
+ * Activity that shows a list of news, fetched using {@link NewsAPI#getNewsList()}.
+ */
 public class NewsListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -31,9 +34,12 @@ public class NewsListActivity extends AppCompatActivity {
         getData();
     }
 
+    /**
+     * Sets the activity's title on the custom toolbar.
+     */
     private void setupToolbar(){
-        TextView title = findViewById(R.id.toolbar_title);
-        title.setText(getTitle());
+        TextView toolbarTitle = findViewById(R.id.toolbar_title);
+        toolbarTitle.setText(getTitle());
     }
 
     private void setupRecyclerView(){

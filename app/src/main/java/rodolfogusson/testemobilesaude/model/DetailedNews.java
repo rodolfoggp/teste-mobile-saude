@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * Class that represents a more detailed news object, shown at
+ * {@link rodolfogusson.testemobilesaude.ui.activities.newsdetails.NewsDetailsActivity}.
+ */
 public class DetailedNews {
 
     private int id;

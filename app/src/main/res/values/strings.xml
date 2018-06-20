@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TesteMobileSaude</string>
-    <string name="written_date">MMMM, d</string>
+    <string name="list_date">MMMM d</string>
+    <string name="details_date">MMMM d, yyyy | HH:mm</string>
     <string name="newsListElement">News</string>
     <string name="details">Details</string>
 </resources>
