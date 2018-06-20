@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView title;
     private TextView date;
-    private TextView content;
+    private WebView content;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,7 +100,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
                                 getString(R.string.details_date));
                         date.setText(news.getDate().format(formatter));
-                        content.setText(Html.fromHtml(news.getContent(), Html.FROM_HTML_MODE_LEGACY));
+                        //content.setText(Html.fromHtml(news.getContent(), Html.FROM_HTML_MODE_LEGACY));
+                        content.loadData(news.getContent(), "text/html; charset=utf-8", "UTF-8");
                     }
                 } else {
                     //TODO: failure message
