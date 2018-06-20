@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class News implements Serializable{
+public class NewsListElement {
 
     private int id;
 
@@ -28,10 +28,10 @@ public class News implements Serializable{
     private LocalDateTime publicationDate;
 
     @SerializedName("formato")
-    private int format;
+    private Integer format;
 
     @SerializedName("cod_operadora")
-    private int operatorCode;
+    private Integer operatorCode;
 
     @SerializedName("foto_principal_url")
     private String pictureURL;
@@ -39,10 +39,10 @@ public class News implements Serializable{
     private String permalink;
 
     @SerializedName("post_tipo_id")
-    private int postTypeId;
+    private Integer postTypeId;
 
     @SerializedName("categorias")
-    private int[] categories;
+    private Integer[] categories;
 
     @SerializedName("categorias_nomes")
     private String[] categoriesNames;
@@ -103,19 +103,19 @@ public class News implements Serializable{
         this.publicationDate = publicationDate;
     }
 
-    public int getFormat() {
+    public Integer getFormat() {
         return format;
     }
 
-    public void setFormat(int format) {
+    public void setFormat(Integer format) {
         this.format = format;
     }
 
-    public int getOperatorCode() {
+    public Integer getOperatorCode() {
         return operatorCode;
     }
 
-    public void setOperatorCode(int operatorCode) {
+    public void setOperatorCode(Integer operatorCode) {
         this.operatorCode = operatorCode;
     }
 
@@ -135,19 +135,19 @@ public class News implements Serializable{
         this.permalink = permalink;
     }
 
-    public int getPostTypeId() {
+    public Integer getPostTypeId() {
         return postTypeId;
     }
 
-    public void setPostTypeId(int postTypeId) {
+    public void setPostTypeId(Integer postTypeId) {
         this.postTypeId = postTypeId;
     }
 
-    public int[] getCategories() {
+    public Integer[] getCategories() {
         return categories;
     }
 
-    public void setCategories(int[] categories) {
+    public void setCategories(Integer[] categories) {
         this.categories = categories;
     }
 

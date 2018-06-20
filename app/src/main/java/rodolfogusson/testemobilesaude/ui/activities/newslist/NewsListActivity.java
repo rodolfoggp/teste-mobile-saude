@@ -14,13 +14,13 @@ import retrofit2.Response;
 import rodolfogusson.testemobilesaude.R;
 import rodolfogusson.testemobilesaude.communication.NewsAPI;
 import rodolfogusson.testemobilesaude.communication.RestAdapter;
-import rodolfogusson.testemobilesaude.model.News;
-import rodolfogusson.testemobilesaude.ui.activities.newslist.adapters.NewsAdapter;
+import rodolfogusson.testemobilesaude.model.NewsListElement;
+import rodolfogusson.testemobilesaude.ui.activities.newslist.adapters.NewsListAdapter;
 
 public class NewsListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private NewsAdapter adapter;
+    private NewsListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +44,13 @@ public class NewsListActivity extends AppCompatActivity {
 
     private void getData(){
         NewsAPI api = RestAdapter.getInstance();
-        Call<List<News>> call = api.getNews();
-        call.enqueue(new Callback<List<News>>() {
+        Call<List<NewsListElement>> call = api.getNewsList();
+        call.enqueue(new Callback<List<NewsListElement>>() {
             @Override
-            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+            public void onResponse(Call<List<NewsListElement>> call, Response<List<NewsListElement>> response) {
                 if(response.code() == 200){
-                    List<News> newsList = response.body();
-                    adapter = new NewsAdapter(newsList);
+                    List<NewsListElement> newsList = response.body();
+                    adapter = new NewsListAdapter(newsList);
                     recyclerView.setAdapter(adapter);
                 } else {
                     //TODO: failure message
@@ -58,7 +58,7 @@ public class NewsListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<News>> call, Throwable t) {
+            public void onFailure(Call<List<NewsListElement>> call, Throwable t) {
                 //TODO: failure message
                 System.out.println(t.getCause().getLocalizedMessage());
             }

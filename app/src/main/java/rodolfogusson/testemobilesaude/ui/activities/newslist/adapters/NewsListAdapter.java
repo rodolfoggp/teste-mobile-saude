@@ -17,14 +17,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import rodolfogusson.testemobilesaude.R;
-import rodolfogusson.testemobilesaude.model.News;
+import rodolfogusson.testemobilesaude.model.NewsListElement;
 import rodolfogusson.testemobilesaude.ui.activities.newsdetails.NewsDetailsActivity;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder>{
+public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>{
 
-    private List<News> newsList;
+    private List<NewsListElement> newsList;
 
-    public NewsAdapter(List list){
+    public NewsListAdapter(List list){
         newsList = list;
     }
 
@@ -37,17 +37,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
         Context context = holder.itemView.getContext();
-        News news = newsList.get(position);
-        Picasso.with(context).load(news.getPictureURL()).into(holder.imageView);
-        holder.title.setText(news.getTitle());
+        NewsListElement newsListElement = newsList.get(position);
+        Picasso.with(context).load(newsListElement.getPictureURL()).into(holder.imageView);
+        holder.title.setText(newsListElement.getTitle());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(context.getString(R.string.written_date));
-        holder.date.setText(news.getDate().format(formatter));
+        holder.date.setText(newsListElement.getDate().format(formatter));
         holder.itemView.setOnClickListener(v -> showDetailsActivity(holder.itemView.getContext(), position));
     }
 
     private void showDetailsActivity(Context context, int position){
         Intent intent = new Intent(context, NewsDetailsActivity.class);
-        intent.putExtra("News", newsList.get(position));
+        intent.putExtra("newsId", newsList.get(position).getId());
         context.startActivity(intent);
         ((Activity)context).overridePendingTransition(R.anim.slide_in_front_left, R.anim.slide_out_back_left);
     }

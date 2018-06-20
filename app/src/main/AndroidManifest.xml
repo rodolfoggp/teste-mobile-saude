@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activities.newslist.NewsListActivity"
-            android:label="@string/news">
+            android:label="@string/newsListElement">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
