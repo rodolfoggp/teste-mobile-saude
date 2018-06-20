@@ -54,7 +54,7 @@
     </style>
 
     <style name="DetailsContent">
-        <item name="android:padding">@dimen/triple_space</item>
+        <item name="android:layout_marginTop">@dimen/double_space</item>
     </style>
 
 </resources>

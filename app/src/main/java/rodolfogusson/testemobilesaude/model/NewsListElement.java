@@ -2,8 +2,7 @@ package rodolfogusson.testemobilesaude.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import org.joda.time.LocalDateTime;
 
 /**
  * Class that represents an element at the list of short news in

@@ -2,21 +2,18 @@ package rodolfogusson.testemobilesaude.ui.activities.newsdetails;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-
-import java.time.format.DateTimeFormatter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +39,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details);
+        //Match the WebView color with the window background for a smoother view:
+        getWindow().getDecorView().setBackgroundColor(Color.WHITE);
         setupFields();
         setupToolbar();
         getNewsId();
@@ -97,9 +96,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
                                 .load(news.getPictureURL())
                                 .into(imageView);
                         title.setText(news.getTitle());
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
-                                getString(R.string.details_date));
-                        date.setText(news.getDate().format(formatter));
+                        date.setText(news.getDate().toString(getString(R.string.details_date)));
                         //content.setText(Html.fromHtml(news.getContent(), Html.FROM_HTML_MODE_LEGACY));
                         content.loadData(news.getContent(), "text/html; charset=utf-8", "UTF-8");
                     }

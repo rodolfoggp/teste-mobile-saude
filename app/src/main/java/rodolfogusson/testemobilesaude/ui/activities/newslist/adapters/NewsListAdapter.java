@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.time.format.DateTimeFormatter;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.util.List;
 
 import rodolfogusson.testemobilesaude.R;
@@ -50,8 +52,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
         NewsListElement newsListElement = newsList.get(position);
         Picasso.with(context).load(newsListElement.getPictureURL()).into(holder.imageView);
         holder.title.setText(newsListElement.getTitle());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(context.getString(R.string.list_date));
-        holder.date.setText(newsListElement.getDate().format(formatter));
+        holder.date.setText(newsListElement.getDate().toString(context.getString(R.string.list_date)));
         holder.itemView.setOnClickListener(v -> showDetailsActivity(holder.itemView.getContext(), position));
     }
 
