@@ -4,4 +4,10 @@
     <dimen name="image_width">128dp</dimen>
     <dimen name="card_spacing">8dp</dimen>
     <dimen name="title_size">20sp</dimen>
+    <dimen name="single_space">4dp</dimen>
+    <dimen name="double_space">8dp</dimen>
+    <dimen name="min_title_size">11sp</dimen>
+    <dimen name="max_title_size">20sp</dimen>
+    <dimen name="card_corner_radius">3dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
 </resources>
