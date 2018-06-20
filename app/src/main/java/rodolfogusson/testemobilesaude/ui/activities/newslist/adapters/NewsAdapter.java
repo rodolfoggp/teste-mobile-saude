@@ -1,5 +1,6 @@
 package rodolfogusson.testemobilesaude.ui.activities.newslist.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -35,16 +36,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
+        Context context = holder.itemView.getContext();
         News news = newsList.get(position);
-        ImageView imageView = holder.itemView.findViewById(R.id.imageview);
-        TextView title = holder.itemView.findViewById(R.id.title_textview);
-        TextView date = holder.itemView.findViewById(R.id.date_textview);
-
-        Picasso.with(holder.itemView.getContext()).load(news.getPictureURL()).into(imageView);
-        title.setText(news.getTitle());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        date.setText(news.getDate().format(formatter));
-
+        Picasso.with(context).load(news.getPictureURL()).into(holder.imageView);
+        holder.title.setText(news.getTitle());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(context.getString(R.string.written_date));
+        holder.date.setText(news.getDate().format(formatter));
         holder.itemView.setOnClickListener(v -> showDetailsActivity(holder.itemView.getContext(), position));
     }
 
@@ -52,6 +49,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         Intent intent = new Intent(context, NewsDetailsActivity.class);
         intent.putExtra("News", newsList.get(position));
         context.startActivity(intent);
+        ((Activity)context).overridePendingTransition(R.anim.slide_in_front_left, R.anim.slide_out_back_left);
     }
 
     @Override
@@ -60,12 +58,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     class NewsViewHolder extends RecyclerView.ViewHolder {
-
-        //CardView card;
+        ImageView imageView;
+        TextView title;
+        TextView date;
 
         NewsViewHolder(View itemView){
             super(itemView);
-            //card = itemView.findViewById(R.id.card);
+            imageView = itemView.findViewById(R.id.imageview);
+            title = itemView.findViewById(R.id.title_textview);
+            date = itemView.findViewById(R.id.date_textview);
         }
     }
 }

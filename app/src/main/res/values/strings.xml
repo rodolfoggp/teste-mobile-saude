@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TesteMobileSaude</string>
+    <string name="written_date">MMMM, dd</string>
+    <string name="news">News</string>
+    <string name="details">Details</string>
 </resources>

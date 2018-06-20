@@ -1,11 +1,11 @@
 package rodolfogusson.testemobilesaude.ui.activities.newslist;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,24 +26,24 @@ public class NewsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
+        setupToolbar();
         setupRecyclerView();
         getData();
+    }
+
+    private void setupToolbar(){
+        TextView title = findViewById(R.id.toolbar_title);
+        title.setText(getTitle());
     }
 
     private void setupRecyclerView(){
         recyclerView = findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        //set adapter in api call
-        //TODO: Remove these:
-//        List<News> list = new ArrayList<>();
-//        list.add(new News());
-//        adapter = new NewsAdapter(list);
-//        recyclerView.setAdapter(adapter);
     }
 
     private void getData(){
-        NewsAPI api = RestAdapter.getInstance(this);
+        NewsAPI api = RestAdapter.getInstance();
         Call<List<News>> call = api.getNews();
         call.enqueue(new Callback<List<News>>() {
             @Override
@@ -52,11 +52,14 @@ public class NewsListActivity extends AppCompatActivity {
                     List<News> newsList = response.body();
                     adapter = new NewsAdapter(newsList);
                     recyclerView.setAdapter(adapter);
+                } else {
+                    //TODO: failure message
                 }
             }
 
             @Override
             public void onFailure(Call<List<News>> call, Throwable t) {
+                //TODO: failure message
                 System.out.println(t.getCause().getLocalizedMessage());
             }
         });
