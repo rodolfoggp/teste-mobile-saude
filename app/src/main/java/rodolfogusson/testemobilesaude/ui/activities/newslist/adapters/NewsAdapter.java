@@ -6,7 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import rodolfogusson.testemobilesaude.R;
@@ -30,7 +35,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
         News news = newsList.get(position);
-        //bind whatever needed here
+        ImageView imageView = holder.itemView.findViewById(R.id.imageview);
+        TextView title = holder.itemView.findViewById(R.id.title_textview);
+        TextView date = holder.itemView.findViewById(R.id.date_textview);
+
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.displayImage(news.getPictureURL(), imageView);
+        title.setText(news.getTitle());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        date.setText(news.getDate().format(formatter));
+
         holder.itemView.setOnClickListener(v -> showDetailsActivity(holder.itemView.getContext(), position));
     }
 
