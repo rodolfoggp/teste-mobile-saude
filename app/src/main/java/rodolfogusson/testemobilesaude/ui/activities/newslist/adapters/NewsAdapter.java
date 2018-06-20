@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
+
+import com.squareup.picasso.Picasso;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -39,8 +40,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         TextView title = holder.itemView.findViewById(R.id.title_textview);
         TextView date = holder.itemView.findViewById(R.id.date_textview);
 
-        ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(news.getPictureURL(), imageView);
+        Picasso.with(holder.itemView.getContext()).load(news.getPictureURL()).into(imageView);
         title.setText(news.getTitle());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         date.setText(news.getDate().format(formatter));
