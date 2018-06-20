@@ -8,11 +8,10 @@
 
     <dimen name="card_height">70dp</dimen>
     <dimen name="card_spacing">4dp</dimen>
-    <dimen name="min_card_title_size">11sp</dimen>
-    <dimen name="max_card_title_size">13sp</dimen>
+    <dimen name="min_card_title_size">10sp</dimen>
+    <dimen name="max_card_title_size">14sp</dimen>
     <dimen name="card_corner_radius">1dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
-    <dimen name="card_title_size">20sp</dimen>
     <dimen name="card_image_width">128dp</dimen>
 
     <dimen name="details_title_size">28sp</dimen>

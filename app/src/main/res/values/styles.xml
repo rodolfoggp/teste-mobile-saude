@@ -20,7 +20,7 @@
     </style>
 
     <style name="CustomTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/toolbar_text_size</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -29,9 +29,10 @@
         <item name="android:layout_marginStart">@dimen/double_space</item>
         <item name="android:layout_marginEnd">@dimen/double_space</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:autoSizeMinTextSize">@dimen/min_card_title_size</item>
-        <item name="android:autoSizeMaxTextSize">@dimen/max_card_title_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">@dimen/min_card_title_size</item>
+        <item name="autoSizeMaxTextSize">@dimen/max_card_title_size</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
     </style>
@@ -48,6 +49,11 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="DetailsCategory">
+        <item name="android:layout_marginStart">@dimen/triple_space</item>
+        <item name="android:layout_marginBottom">@dimen/single_space</item>
+    </style>
+
     <style name="DetailsDate">
         <item name="android:layout_marginLeft">@dimen/triple_space</item>
         <item name="android:textColor">@android:color/darker_gray</item>
@@ -55,6 +61,8 @@
 
     <style name="DetailsContent">
         <item name="android:layout_marginTop">@dimen/double_space</item>
+        <item name="android:layout_marginLeft">@dimen/single_space</item>
+        <item name="android:layout_marginRight">@dimen/single_space</item>
     </style>
 
 </resources>

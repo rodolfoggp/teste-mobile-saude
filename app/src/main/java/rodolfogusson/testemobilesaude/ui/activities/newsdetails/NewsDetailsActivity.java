@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import rodolfogusson.testemobilesaude.R;
 import rodolfogusson.testemobilesaude.communication.NewsAPI;
 import rodolfogusson.testemobilesaude.communication.RestAdapter;
 import rodolfogusson.testemobilesaude.model.DetailedNews;
+import rodolfogusson.testemobilesaude.utils.UIUtil;
 
 
 /**
@@ -32,6 +34,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     private int id;
     private ImageView imageView;
     private TextView title;
+    private TextView category;
     private TextView date;
     private WebView content;
 
@@ -48,11 +51,12 @@ public class NewsDetailsActivity extends AppCompatActivity {
     }
 
     /**
-     * Gets the reference from the layout file for all the views needed in this activity.
+     * Gets the reference to all the views needed in this activity, from the layout file.
      */
     private void setupFields(){
         imageView = findViewById(R.id.details_imageview);
         title = findViewById(R.id.details_title);
+        category = findViewById(R.id.details_category);
         date = findViewById(R.id.details_date);
         content = findViewById(R.id.details_content);
     }
@@ -95,20 +99,28 @@ public class NewsDetailsActivity extends AppCompatActivity {
                         Picasso.with(NewsDetailsActivity.this)
                                 .load(news.getPictureURL())
                                 .into(imageView);
+
                         title.setText(news.getTitle());
+
+                        String[] categories = news.getCategoriesNames();
+                        if(categories != null && news.getCategoriesNames().length > 0){
+                            category.setVisibility(View.VISIBLE);
+                            category.setText(UIUtil.getCategoriesText(news.getCategoriesNames()));
+                        }
+
                         date.setText(news.getDate().toString(getString(R.string.details_date)));
-                        //content.setText(Html.fromHtml(news.getContent(), Html.FROM_HTML_MODE_LEGACY));
+
                         content.loadData(news.getContent(), "text/html; charset=utf-8", "UTF-8");
                     }
                 } else {
-                    //TODO: failure message
+                    UIUtil.showError(NewsDetailsActivity.this);
                 }
             }
 
             @Override
             public void onFailure(Call<DetailedNews> call, Throwable t) {
-                //TODO: failure message
-                System.out.println(t.getCause().getLocalizedMessage());
+                UIUtil.showError(NewsDetailsActivity.this);
+
             }
         });
     }

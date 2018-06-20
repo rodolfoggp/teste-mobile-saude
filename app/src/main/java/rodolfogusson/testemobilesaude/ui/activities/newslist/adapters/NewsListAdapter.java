@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.squareup.picasso.Picasso;
-
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
 
@@ -30,7 +26,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     private List<NewsListElement> newsList;
 
-    public NewsListAdapter(List list){
+    public NewsListAdapter(List<NewsListElement> list){
         newsList = list;
     }
 
@@ -58,7 +54,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsVi
 
     /**
      * Passes the id of the element at the specified {@code position}
-     * to the a {@link NewsDetailsActivity} and starts this activity.
+     * to a new {@link NewsDetailsActivity} and starts this activity.
      * Also overrides animations for changing activities.
      * @param context Context used to create the Intent.
      * @param position Position of the element on the list.

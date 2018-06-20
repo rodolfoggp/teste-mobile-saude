@@ -4,4 +4,7 @@
     <string name="details_date">MMMM d, yyyy | HH:mm</string>
     <string name="newsListElement">News</string>
     <string name="details">Details</string>
+
+    <string name="error_no_network">No internet connection!</string>
+    <string name="error_unexpected">Unexpected error!</string>
 </resources>

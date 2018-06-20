@@ -9,14 +9,23 @@ import rodolfogusson.testemobilesaude.model.DetailedNews;
 import rodolfogusson.testemobilesaude.model.NewsListElement;
 
 /**
- * Interface that determine methods to be used to consume the REST Api.
+ * Interface that determines methods to consume the REST Api.
  */
 public interface NewsAPI {
     String BASE_URL = "http://mobilesaude.com.br/";
 
+    /**
+     * Method to get a list of {@link NewsListElement}.
+     * @return The call with said list.
+     */
     @GET("challenge/lista.json")
     Call<List<NewsListElement>> getNewsList();
 
+    /**
+     * Method to get a specific {@link DetailedNews}, using its {@code id}.
+     * @param id Used to fetch a specific object from the api.
+     * @return The call with said {@link DetailedNews}.
+     */
     @GET("challenge/{id}.json")
     Call<DetailedNews> getNewsById(@Path("id") int id);
 }

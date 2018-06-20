@@ -3,6 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="@dimen/card_spacing"
     android:layout_marginBottom="@dimen/card_spacing"
     android:layout_marginLeft="@dimen/double_space"
@@ -26,11 +27,14 @@
             android:orientation="vertical"
             android:weightSum="10">
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/title_textview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="7"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="@dimen/min_card_title_size"
+                app:autoSizeMaxTextSize="@dimen/max_card_title_size"
                 style="@style/CardTitle" />
 
             <TextView
