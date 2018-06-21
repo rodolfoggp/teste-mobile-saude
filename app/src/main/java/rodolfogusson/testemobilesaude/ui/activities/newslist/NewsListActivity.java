@@ -15,6 +15,7 @@ import rodolfogusson.testemobilesaude.R;
 import rodolfogusson.testemobilesaude.communication.NewsAPI;
 import rodolfogusson.testemobilesaude.communication.RestAdapter;
 import rodolfogusson.testemobilesaude.model.NewsListElement;
+import rodolfogusson.testemobilesaude.ui.activities.newsdetails.NewsDetailsActivity;
 import rodolfogusson.testemobilesaude.ui.activities.newslist.adapters.NewsListAdapter;
 import rodolfogusson.testemobilesaude.utils.UIUtil;
 
@@ -65,8 +66,12 @@ public class NewsListActivity extends AppCompatActivity {
             public void onResponse(Call<List<NewsListElement>> call, Response<List<NewsListElement>> response) {
                 if(response.code() == 200){
                     List<NewsListElement> newsList = response.body();
-                    adapter = new NewsListAdapter(newsList);
-                    recyclerView.setAdapter(adapter);
+                    if(newsList != null && newsList.size() > 0) {
+                        adapter = new NewsListAdapter(newsList);
+                        recyclerView.setAdapter(adapter);
+                    }  else {
+                        UIUtil.showError(NewsListActivity.this);
+                    }
                 } else {
                     UIUtil.showError(NewsListActivity.this);
                 }

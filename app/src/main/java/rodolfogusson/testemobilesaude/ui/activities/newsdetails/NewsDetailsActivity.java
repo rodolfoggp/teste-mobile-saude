@@ -111,6 +111,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
                         date.setText(news.getDate().toString(getString(R.string.details_date)));
 
                         content.loadData(news.getContent(), "text/html; charset=utf-8", "UTF-8");
+                    } else {
+                        UIUtil.showError(NewsDetailsActivity.this);
                     }
                 } else {
                     UIUtil.showError(NewsDetailsActivity.this);
@@ -120,7 +122,6 @@ public class NewsDetailsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<DetailedNews> call, Throwable t) {
                 UIUtil.showError(NewsDetailsActivity.this);
-
             }
         });
     }
